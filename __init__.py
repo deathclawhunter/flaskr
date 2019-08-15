@@ -1,6 +1,7 @@
 import os
 
 from flask import Flask
+from . import db
 
 def create_app(test_config=None):
     app = Flask(__name__, instance_relative_config=True)
@@ -21,8 +22,7 @@ def create_app(test_config=None):
     @app.route('hello')
     def hello():
         return 'Hello world'
-	
-	from . import db
-	db.init_app(app)
+
+    db.init_app(app)
 
     return app
